@@ -8,8 +8,9 @@ var authenticationFailure = function () {
 
 window.onload = function () {
     window.Trello.authorize({
-        type: 'popup',
+        type: 'redirect',
         name: 'Extrator de Dados',
+        persist: false,
         scope: {
             read: 'true',
             write: 'true'
