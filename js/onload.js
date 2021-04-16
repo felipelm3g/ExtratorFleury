@@ -1,5 +1,6 @@
-var authenticationSuccess = function () {
+var authenticationSuccess = function (data) {
     console.log('Successful authentication');
+    console.log(data);
 };
 
 var authenticationFailure = function () {
