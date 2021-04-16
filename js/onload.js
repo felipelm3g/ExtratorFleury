@@ -7,16 +7,16 @@ var authenticationFailure = function () {
 };
 
 window.onload = function () {
-    window.Trello.authorize({
+    Trello.authorize({
         type: 'redirect',
         name: 'Extrator de Dados',
         persist: false,
         scope: {
             read: 'true',
-            write: 'true'
+            write: 'true',
+            account: false
         },
-        key: 'e79af8dd8bf538b09bcba42ce87e18b6a6f81d5f3d108eea7396f88bd6a468aa',
-        response_type: 'token',
+        key: '57caa754-cafd-4557-87f1-d662323e7bdf',
         expiration: 'never',
         success: authenticationSuccess,
         error: authenticationFailure
