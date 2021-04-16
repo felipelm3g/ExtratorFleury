@@ -1,6 +1,9 @@
 var authenticationSuccess = function (data) {
     console.log('Successful authentication');
-    console.log(data);
+    Trello.get("members/me/boards", { fields: "id,name" }, function (err, boards) {
+        console.log(boards);
+        console.log(err);
+    });
 };
 
 var authenticationFailure = function () {
