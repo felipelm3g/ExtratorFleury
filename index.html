@@ -12,12 +12,26 @@
         <title>Extrator Trello</title>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="https://api.trello.com/1/client.js?key=71ed872b9901d4279480d0aa748873c7"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script type="text/javascript" src="js/lerjson.js"></script>
     </head>
 
     <body>
-        <div id="relatorio">
-
+        <div id="relatorio" style="float: left;width: 100%;overflow: auto;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Titulo</th>
+                        <!--<th scope="col">Descrição</th>-->
+                        <th scope="col">Coluna</th>
+                        <th scope="col">Label</th>
+                        <th scope="col">Data de Entrega</th>
+                        <th scope="col">Membros</th>
+                    </tr>
+                </thead>
+                <tbody id="tablecards">
+                </tbody>
+            </table>
         </div>
 
         <div class="modal fade" id="ModalJSON" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
