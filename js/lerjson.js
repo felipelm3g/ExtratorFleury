@@ -9,29 +9,28 @@ function gerarJSON() {
         console.log(jsondados);
 
         //Custon Fields
+        document.getElementById("tabletitulos").innerHTML = "Titulo;Descrição;Coluna;Label;Data de Entrega;Membros;";
         for (var cf = 0; cf < jsondados['customFields'].length; cf++) {
-            document.getElementById("tabletitulos").innerHTML += "<th scope='col'>" + jsondados['customFields'][cf]['name'] + "</th>";
+            document.getElementById("tabletitulos").innerHTML += jsondados['customFields'][cf]['name'] + ";";
         }
 
         //Cards BOARDs
         for (var i = 0; i < jsondados['cards'].length; i++) {
             var html = "";
-            html += "<tr>";
-            html += "<td>" + jsondados['cards'][i]['name'] + "</td>";
-//            html += "<td>" + jsondados['cards'][i]['desc'] + "</td>";
+            html += jsondados['cards'][i]['name'] + ";";
+            html += jsondados['cards'][i]['desc'] + ";";
             for (var l = 0; l < jsondados['lists'].length; l++) {
                 if (jsondados['lists'][l]['id'] == jsondados['cards'][i]['idList']) {
-                    html += "<td>" + jsondados['lists'][l]['name'] + "</td>";
+                    html += jsondados['lists'][l]['name'] + ";";
                 }
             }
-            html += "<td>" + jsondados['cards'][i]['labels'][0]['name'] + "</td>";
+            html += jsondados['cards'][i]['labels'][0]['name'] + ";";
             if (jsondados['cards'][i]['dueComplete']) {
                 var data = jsondados['cards'][i]['due'].split("T");
-                html += "<td>" + data[0] + "</td>";
+                html += data[0] + ";";
             } else {
-                html += "<td></td>";
+                html += ";";
             }
-            html += "<td>";
             for (var n = 0; n < jsondados['cards'][i]['idMembers'].length; n++) {
                 for (var m = 0; m < jsondados['members'].length; m++) {
                     if (jsondados['cards'][i]['idMembers'][n] == jsondados['members'][m]['id']) {
@@ -42,7 +41,7 @@ function gerarJSON() {
                     }
                 }
             }
-            html += "</td>";
+            html += ";";
             
             //outros campos aqui
 
@@ -53,18 +52,18 @@ function gerarJSON() {
                     for (var cf2 = 0; cf2 < jsondados['cards'][i]['customFieldItems'].length; cf2++) {
                         if (jsondados['customFields'][cf]['id'] == jsondados['cards'][i]['customFieldItems'][cf2]['idCustomField']) {
                             var type = jsondados['customFields'][cf]['type'];
-                            html += "<td>" + jsondados['cards'][i]['customFieldItems'][cf2]['value'][type] + "</td>";
+                            html += jsondados['cards'][i]['customFieldItems'][cf2]['value'][type] + ";";
                             nowrite = false;
                         }
                     }
                     if (nowrite) {
-                        html += "<td></td>";
+                        html += ";";
                     }
                 } else {
-                    html += "<td></td>";
+                    html += ";";
                 }
             }
-            html += "</tr>";
+            html += "</br>";
             document.getElementById("tablecards").innerHTML += html;
             console.log(jsondados['cards'][i]);
         }
