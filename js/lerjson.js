@@ -1,5 +1,26 @@
 window.onload = function () {
-    $('#ModalJSON').modal();
+    var ajax1 = $.ajax({
+        url: "https://trello.com/b/hW1zrUTf.json",
+        type: 'POST',
+        dataType: 'json',
+        beforeSend: function () {
+            console.log("Acessando Quadro...");
+        }
+    })
+        .done(function (data) {
+            console.log(data);
+            jsondados = data;
+            processar();
+            return;
+        })
+        .fail(function (jqXHR, textStatus, data) {
+            console.log(jqXHR);
+            console.log(textStatus);
+            console.log(data);
+            $('#ModalJSON').modal();
+            return;
+        });
+
 }
 var jsondados = "";
 function gerarJSON() {
@@ -8,6 +29,13 @@ function gerarJSON() {
         document.getElementById("TextareaJSON").value = "";
         console.log(jsondados);
 
+        processar();
+    } catch (e) {
+        alert("Dado inserido nao pode ser processado");
+    }
+}
+function processar() {
+    try {
         //Custon Fields
         document.getElementById("tabletitulos").innerHTML = "Titulo;Descrição;Coluna;Label;Data de Entrega;Membros;";
         for (var cf = 0; cf < jsondados['customFields'].length; cf++) {
@@ -42,7 +70,7 @@ function gerarJSON() {
                 }
             }
             html += ";";
-            
+
             //outros campos aqui
 
             //Custon Fields
