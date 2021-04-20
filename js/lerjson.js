@@ -1,7 +1,7 @@
 window.onload = function () {
     var ajax1 = $.ajax({
         url: "https://trello.com/b/hW1zrUTf.json",
-        type: 'POST',
+        type: 'GET',
         dataType: 'json',
         beforeSend: function () {
             console.log("Acessando Quadro...");
