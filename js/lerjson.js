@@ -1,3 +1,5 @@
+var key = "71ed872b9901d4279480d0aa748873c7";
+var token = "";
 window.onload = function () {
     var ajax1 = $.ajax({
         url: "https://trello.com/b/hW1zrUTf.json",
